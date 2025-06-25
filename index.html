@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', Arial, sans-serif;
+            background: #f8fafc;
+            color: #222;
+        }
+
+        .header {
+            background: #337a7c;
+            color: #fff;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 8px rgba(51, 122, 124, 0.08);
+        }
+
+        .header .logo {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 28px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+
+        .header nav a:hover {
+            color: #e0f1f1;
+        }
+
+        .hero {
+            padding: 60px 20px 40px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #337a7c 0%, #4a9fa3 100%);
+            color: #fff;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero .cta-btn {
+            background: #fff;
+            color: #337a7c;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 13px 36px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(51, 122, 124, 0.08);
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .hero .cta-btn:hover {
+            background: #e0f1f1;
+            color: #337a7c;
+        }
+
+        .template-section {
+            max-width: 1100px;
+            margin: 40px auto 0 auto;
+            padding: 0 20px 40px 20px;
+        }
+
+        .template-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #337a7c;
+        }
+
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
+        }
+
+        .template-card {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(51, 122, 124, 0.07);
+            padding: 18px 18px 22px 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: box-shadow 0.2s, transform 0.2s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .template-card:hover {
+            box-shadow: 0 8px 32px rgba(51, 122, 124, 0.13);
+            border: 2px solid #337a7c;
+            transform: translateY(-4px) scale(1.03);
+        }
+
+        .template-card img {
+            width: 100%;
+            max-width: 170px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            background: #e0f1f1;
+        }
+
+        .template-card .template-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #337a7c;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .template-card .choose-btn {
+            background: #337a7c;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 22px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: background 0.2s;
+        }
+
+        .template-card .choose-btn:hover {
+            background: #265b5c;
+        }
+
+        .footer {
+            background: #e0f1f1;
+            color: #337a7c;
+            text-align: center;
+            padding: 24px 10px 18px 10px;
+            font-size: 1rem;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .template-card img {
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo"><i class="fas fa-file-alt"></i> ResumeBuilder</div>
+        <nav>
+            <a href="#templates">Templates</a>
+            <a href="#how">How it Works</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+    <div class="hero">
+        <h1>Create Your Resume in Minutes!</h1>
+        <p>Choose a professional template, fill in your details, preview, and download your resume as PDF. Fast, free,
+            and beautiful.</p>
+        <button class="cta-btn" onclick="document.getElementById('templates').scrollIntoView({behavior:'smooth'})">Get
+            Started</button>
+    </div>
+    <div class="template-section" id="templates">
+        <h2>Choose Your Resume Template</h2>
+        <div class="template-grid">
+
+            <div class="template-card" data-template="resume-builder">
+                <img src="image/Screenshot 2025-06-25 120308.png" alt="Builder Template">
+                <div class="template-title">Builder</div>
+                <a href="template/t1/resume-builder.html"><button class="choose-btn">Use Template</button></a>
+            </div>
+
+            <div class="template-card" data-template="modern">
+                <img src="image/Screenshot 2025-06-25 120653.png" alt="Modern Template">
+                <div class="template-title">Simple</div>
+                <a href="template/t2/index.html"> <button class="choose-btn">Use Template</button>
+                </a>
+            </div>
+            <div class="template-card" data-template="classic">
+                <img src="image/Screenshot 2025-06-25 130056.png" alt="Classic Template">
+                <div class="template-title">Classic</div>
+                <a href="template/t3/index.html">
+                    <button class="choose-btn">Use Template</button>
+
+                </a>
+            </div>
+            <!-- <div class="template-card" data-template="creative">
+                <img src="https://placehold.co/170x200/ffb347/fff?text=Creative" alt="Creative Template">
+                <div class="template-title">Creative</div>
+                <button class="choose-btn">Use Template</button>
+            </div>
+            <div class="template-card" data-template="minimal">
+                <img src="https://placehold.co/170x200/222/fff?text=Minimal" alt="Minimal Template">
+                <div class="template-title">Minimal</div>
+                <button class="choose-btn">Use Template</button>
+            </div>
+            <div class="template-card" data-template="elegant">
+                <img src="https://placehold.co/170x200/8e44ad/fff?text=Elegant" alt="Elegant Template">
+                <div class="template-title">Elegant</div>
+                <button class="choose-btn">Use Template</button> -->
+        </div>
+    </div>
+    <!-- How it Works Section -->
+    <div class="template-section" id="how">
+        <h2>How it Works</h2>
+        <div style="max-width:700px;margin:0 auto;">
+            <ol style="list-style:none;padding:0;">
+                <li style="display:flex;align-items:center;margin-bottom:22px;"><span
+                        style="font-size:1.7rem;color:#337a7c;margin-right:16px;"><i
+                            class="fas fa-mouse-pointer"></i></span> <span><b>1. Choose a Template:</b> Select a resume
+                        template that fits your style.</span></li>
+                <li style="display:flex;align-items:center;margin-bottom:22px;"><span
+                        style="font-size:1.7rem;color:#337a7c;margin-right:16px;"><i class="fas fa-pen"></i></span>
+                    <span><b>2. Fill Your Details:</b> Enter your personal, education, and experience details in the
+                        form.</span>
+                </li>
+                <li style="display:flex;align-items:center;margin-bottom:22px;"><span
+                        style="font-size:1.7rem;color:#337a7c;margin-right:16px;"><i class="fas fa-eye"></i></span>
+                    <span><b>3. Preview:</b> Instantly see a live preview of your resume as you type.</span>
+                </li>
+                <li style="display:flex;align-items:center;margin-bottom:22px;"><span
+                        style="font-size:1.7rem;color:#337a7c;margin-right:16px;"><i class="fas fa-download"></i></span>
+                    <span><b>4. Download:</b> Download your resume as a professional PDF with one click.</span>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <!-- Contact Us Section -->
+    <div class="template-section" id="contact">
+        <h2>Contact Us</h2>
+        <div style="max-width:600px;margin:0 auto;">
+            <form
+                style="background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(51,122,124,0.07);padding:22px 18px 16px 18px;display:flex;flex-direction:column;gap:14px;">
+                <div style="display:flex;gap:12px;">
+                    <input type="text" placeholder="Your Name" required
+                        style="flex:1;padding:10px 12px;border-radius:6px;border:1px solid #cfd8dc;">
+                    <input type="email" placeholder="Your Email" required
+                        style="flex:1;padding:10px 12px;border-radius:6px;border:1px solid #cfd8dc;">
+                </div>
+                <textarea placeholder="Your Message" required
+                    style="padding:10px 12px;border-radius:6px;border:1px solid #cfd8dc;min-height:70px;"></textarea>
+                <button type="submit"
+                    style="background:#337a7c;color:#fff;font-weight:600;padding:10px 0;border:none;border-radius:6px;cursor:pointer;">Send
+                    Message</button>
+            </form>
+            <div style="margin-top:18px;text-align:center;color:#337a7c;font-size:1.05rem;">
+                <i class="fas fa-envelope"></i> satyendrachaudhary38@gmail.com &nbsp; | &nbsp; <i
+                    class="fas fa-phone"></i>
+                +91-8840859444
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        &copy; 2025 satyendra chaudhary. All rights reserved.
+    </div>
+    <script>
+
+
+    </script>
+</body>
+
+</html>

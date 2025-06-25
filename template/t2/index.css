@@ -1,0 +1,377 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f8fb;
+    min-height: 100vh;
+}
+
+.header {
+    background: #2563eb;
+    color: #fff;
+    padding: 1.5rem 0;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.main-flex {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.form-section,
+.preview-section {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(37, 99, 235, 0.08);
+    padding: 2rem 1.5rem;
+    min-width: 320px;
+    max-width: 420px;
+    width: 100%;
+}
+
+.form-section {
+    flex: 1 1 350px;
+}
+
+.preview-section {
+    flex: 1 1 400px;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    color: #2563eb;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s;
+    background: #f9fafb;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border: 1.5px solid #2563eb;
+    background: #fff;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sb {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.sb:hover {
+    background: #1742a0;
+}
+
+.dresume {
+    margin-top: 1.5rem;
+    background: #22c55e;
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    align-self: flex-end;
+    display: block !important;
+    z-index: 1;
+}
+
+.dresume:hover {
+    background: #15803d;
+}
+
+.resume-preview {
+    background: #f9fafb;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.04);
+    padding: 1.5rem;
+    min-height: 500px;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #222;
+}
+
+.preview-section h2 {
+    color: #2563eb;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.addEducation,
+.addSkill,
+.addExperience,
+.addHobies,
+.removeEducation,
+.removeSkiil,
+.removeExperience,
+.removeHobies {
+    background: #e0e7ff;
+    color: #2563eb;
+    border: none;
+    border-radius: 6px;
+    padding: 0.3rem 0.8rem;
+    margin-left: 0.5rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.addEducation:hover,
+.addSkill:hover,
+.addExperience:hover,
+.addHobies:hover,
+.removeEducation:hover,
+.removeSkiil:hover,
+.removeExperience:hover,
+.removeHobies:hover {
+    background: #2563eb;
+    color: #fff;
+}
+
+@media (max-width: 900px) {
+    .main-flex {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1rem 0.5rem;
+    }
+
+    .form-section,
+    .preview-section {
+        max-width: 100%;
+        min-width: unset;
+    }
+
+    .preview-section {
+        min-height: 400px;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    padding: 25px 50px;
+}
+
+.pritable {
+    position: relative;
+    padding-top: 30px;
+}
+
+.picture {
+    position: absolute;
+    top: 10px;
+    right: 32px;
+    width: 110px;
+    height: 110px;
+    border-radius: 12px;
+    border: 2px solid #2563eb;
+    background: #fff;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.10);
+    z-index: 2;
+    display: block !important;
+}
+
+.picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    display: block;
+}
+
+/* intro */
+.intro {
+    width: 100%;
+    border-bottom: black solid 2px;
+    padding: 4px 0px;
+
+}
+
+.intro h1 {
+    text-align: center;
+    font-size: 30px;
+    color: rgb(73, 7, 226);
+}
+
+.intro h2 {
+    font-size: 20px;
+}
+
+.detailPer {
+    margin-top: 25px;
+}
+
+.objective {
+    width: 100%;
+
+
+}
+
+.objective h2 {
+    font-size: 18px;
+    /* color: rgb(73, 7, 226); */
+    margin-top: 2PX;
+    background-color: rgba(239, 107, 107, 0.277);
+}
+
+.objective p {
+    padding: 10px 0px 10px 0px;
+}
+
+.education {
+    width: 100%;
+}
+
+.education h2 {
+    font-size: 18px;
+    /* color: rgb(73, 7, 226); */
+    margin-top: 2PX;
+    background-color: rgba(239, 107, 107, 0.277);
+}
+
+.education ul {
+
+    padding: 10px 0px 10px 50px;
+}
+
+.skills {
+    width: 100%;
+}
+
+.skills h2 {
+    font-size: 18px;
+    /* color: rgb(73, 7, 226); */
+    margin-top: 2PX;
+    background-color: rgba(239, 107, 107, 0.277);
+}
+
+.skills ul {
+    padding: 10px 0px 10px 50px;
+}
+
+.workExperience {
+    width: 100%;
+}
+
+.workExperience h2 {
+    font-size: 18px;
+    /* color: rgb(73, 7, 226); */
+    margin-top: 2PX;
+    background-color: rgba(239, 107, 107, 0.277);
+}
+
+.workExperience ul {
+    padding: 10px 0px 10px 50px;
+}
+
+.strengthHobbies {
+    width: 100%;
+}
+
+.strengthHobbies h2 {
+    font-size: 18px;
+    /* color: rgb(73, 7, 226); */
+    margin-top: 2PX;
+    background-color: rgba(239, 107, 107, 0.277);
+}
+
+.strengthHobbies ul {
+    padding: 10px 0px 10px 50px;
+}
+
+.personalDetails {
+    width: 100%;
+}
+
+.personalDetails h2 {
+    font-size: 18px;
+    /* color: rgb(73, 7, 226); */
+    margin-top: 2PX;
+    background-color: rgba(239, 107, 107, 0.277);
+}
+
+.per {
+    width: 100%;
+    margin-top: 15px;
+    padding-left: 50px;
+
+}
+
+.per span {
+    width: 50%;
+    text-align: start;
+}
+
+.per p {
+    width: 50;
+}
+
+.cd {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.dt {
+    margin-top: 40px;
+}
+
+.dc {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.dc h2 {
+    font-size: 18px;
+    /* color: rgb(73, 7, 226); */
+    margin-top: 2PX;
+    background-color: rgba(239, 107, 107, 0.277);
+
+}
+
+.dc p {
+    padding: 10px 0px 10px 50px;
+}
