@@ -508,9 +508,7 @@ function displayResume(data) {
             ` : ''}
             <div style="background: #337a7c; color: #fff; padding: 7px 16px; font-weight: bold; font-size: 1.05rem; letter-spacing: 1px; margin: 5px 0 7px -32px; width: calc(100% + 64px); box-sizing: border-box;">DECLARATION</div>
             <div style="font-size:0.95rem; margin-bottom: 15px;">
-                I hereby certify that the above information are true and correct according to the best of my knowledge & My
-                Experience. If selected I assure that I would perform to the best of my abilities, early awaiting a Positive
-                response.
+                I hereby declare that the information provided above is true to the best of my knowledge and belief
             </div>
             <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
                 <div style="font-weight: bold; letter-spacing:1px;">${data.name.toUpperCase()}</div>
