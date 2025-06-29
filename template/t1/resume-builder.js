@@ -2,6 +2,7 @@
 
 let experienceCount = 0;
 let passportCount = 0;
+let visaDetailsCount = 0;
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
@@ -274,6 +275,49 @@ function removePassport(button) {
     showToast('Passport section removed', 'warning');
 }
 
+// Add visa details section
+function addVisaDetails() {
+    visaDetailsCount++;
+    const container = document.getElementById('visaDetailsContainer');
+    const visaDiv = document.createElement('div');
+    visaDiv.className = 'visa-details-item';
+    visaDiv.innerHTML = `
+        <button type="button" class="remove-btn" onclick="removeVisaDetails(this)">×</button>
+        <div class="grid-2">
+            <div class="form-group">
+                <label>Visa Type</label>
+                <input type="text" class="form-control" name="visaType${visaDetailsCount}">
+            </div>
+            <div class="form-group">
+                <label>Border Number</label>
+                <input type="text" class="form-control" name="borderNumber${visaDetailsCount}">
+            </div>
+        </div>
+        <div class="grid-2">
+            <div class="form-group">
+                <label>City Of Origin</label>
+                <input type="text" class="form-control" name="cityOfOrigin${visaDetailsCount}">
+            </div>
+            <div class="form-group">
+                <label>Nationality</label>
+                <input type="text" class="form-control" name="visaNationality${visaDetailsCount}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Occupation</label>
+            <input type="text" class="form-control" name="visaOccupation${visaDetailsCount}">
+        </div>
+    `;
+    container.appendChild(visaDiv);
+    // Add validation to new fields (optional, not required)
+}
+
+// Remove visa details section
+function removeVisaDetails(button) {
+    button.parentElement.remove();
+    showToast('Visa Details section removed', 'warning');
+}
+
 // Show toast notification
 function showToast(message, type = 'success') {
     const toastContainer = document.getElementById('toastContainer');
@@ -340,15 +384,18 @@ function generateResume() {
         const experiences = [];
         const experienceItems = document.querySelectorAll('.experience-item');
         experienceItems.forEach((item, index) => {
-            const inputs = item.querySelectorAll('input, textarea');
-            if (inputs[0].value && inputs[1].value) { // Only add if title and company are filled
-                experiences.push({
-                    title: inputs[0].value,
-                    company: inputs[1].value,
-                    fromDate: inputs[2].value,
-                    toDate: inputs[3].value,
-                    description: inputs[4].value
-                });
+            // Only select those that are NOT inside visaDetailsContainer
+            if (!item.closest('#visaDetailsContainer')) {
+                const inputs = item.querySelectorAll('input, textarea');
+                if (inputs[0].value && inputs[1].value) { // Only add if title and company are filled
+                    experiences.push({
+                        title: inputs[0].value,
+                        company: inputs[1].value,
+                        fromDate: inputs[2].value,
+                        toDate: inputs[3].value,
+                        description: inputs[4].value
+                    });
+                }
             }
         });
 
@@ -367,6 +414,23 @@ function generateResume() {
             }
         });
 
+        // Get visa details data
+        const visaDetails = [];
+        const visaItems = document.querySelectorAll('#visaDetailsContainer .visa-details-item');
+        visaItems.forEach((item) => {
+            const inputs = item.querySelectorAll('input');
+            // Only add if at least one field is filled
+            if (Array.from(inputs).some(input => input.value.trim() !== '')) {
+                visaDetails.push({
+                    visaType: inputs[0].value,
+                    borderNumber: inputs[1].value,
+                    cityOfOrigin: inputs[2].value,
+                    nationality: inputs[3].value,
+                    occupation: inputs[4].value
+                });
+            }
+        });
+
         // Get education data (dynamic rows, split by comma)
         const eduInputs = document.querySelectorAll('.edu-input');
         let educations = [];
@@ -381,6 +445,7 @@ function generateResume() {
 
         resumeData.experiences = experiences;
         resumeData.passports = passports;
+        resumeData.visaDetails = visaDetails;
 
         // Generate and display resume
         displayResume(resumeData);
@@ -417,7 +482,7 @@ function displayResume(data) {
             <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 2px; position: relative; gap: 0;">
                 <div style="flex: 1; min-width: 0;">
                     <div style="font-weight:700; letter-spacing:0.5px; margin-bottom:5px;">${data.name.toUpperCase()}</div>
-                    <div style="font-size:0.98rem; margin-bottom:3px;"><b>India Mob. no.:</b> ${data.phone}</div>
+                    <div style="font-size:0.98rem; margin-bottom:3px;"><b> Mob. no.:</b> ${data.phone}</div>
                     <div style="font-size:0.98rem; margin-bottom:3px;"><b>Email:</b> ${data.email}</div>
                 </div>
                 <div style="width: 110px; min-width: 110px; display: flex; justify-content: flex-end;">
@@ -475,6 +540,27 @@ function displayResume(data) {
             </ul>
             <div style="background: #337a7c; color: #fff; padding: 7px 16px; font-weight: bold; font-size: 1.05rem; letter-spacing: 1px; margin: 5px 0 7px -32px; width: calc(100% + 64px); box-sizing: border-box;">LANGUAGE KNOWN</div>
             <div style="margin-bottom: 15px;"><span style="color: #337a7c; font-weight: bold;">${data.languages}</span></div>
+            ${data.visaDetails && data.visaDetails.length > 0 ? `
+                <div style="background: #337a7c; color: #fff; padding: 7px 16px; font-weight: bold; font-size: 1.05rem; letter-spacing: 1px; margin: 5px 0 7px -32px; width: calc(100% + 64px); box-sizing: border-box;">VISA DETAILS</div>
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 8px; font-size: 0.9rem;">
+                    <tr>
+                        <th style="border: 1px solid #337a7c; padding: 3px 7px; font-size: 0.9rem; text-align: left; background: #ffe29a; color: #337a7c;">Visa Type</th>
+                        <th style="border: 1px solid #337a7c; padding: 3px 7px; font-size: 0.9rem; text-align: left; background: #b2e9d2; color: #337a7c;">Border Number</th>
+                        <th style="border: 1px solid #337a7c; padding: 3px 7px; font-size: 0.9rem; text-align: left; background: #174b67; color: #fff;">City Of Origin</th>
+                        <th style="border: 1px solid #337a7c; padding: 3px 7px; font-size: 0.9rem; text-align: left; background: #ffe29a; color: #337a7c;">Nationality</th>
+                        <th style="border: 1px solid #337a7c; padding: 3px 7px; font-size: 0.9rem; text-align: left; background: #b2e9d2; color: #337a7c;">Occupation</th>
+                    </tr>
+                    ${data.visaDetails.map(visa => `
+                        <tr>
+                            <td style="border: 1px solid #337a7c; padding: 3px 7px;">${visa.visaType}</td>
+                            <td style="border: 1px solid #337a7c; padding: 3px 7px;">${visa.borderNumber}</td>
+                            <td style="border: 1px solid #337a7c; padding: 3px 7px;">${visa.cityOfOrigin}</td>
+                            <td style="border: 1px solid #337a7c; padding: 3px 7px;">${visa.nationality}</td>
+                            <td style="border: 1px solid #337a7c; padding: 3px 7px;">${visa.occupation}</td>
+                        </tr>
+                    `).join('')}
+                </table>
+            ` : ''}
             ${data.passports.length > 0 ? `
                 <div style="background: #337a7c; color: #fff; padding: 7px 16px; font-weight: bold; font-size: 1.05rem; letter-spacing: 1px; margin: 5px 0 7px -32px; width: calc(100% + 64px); box-sizing: border-box;">PASSPORT DETAILS</div>
                 <table style="width: 100%; border-collapse: collapse; margin-bottom: 8px; font-size: 0.9rem;">
