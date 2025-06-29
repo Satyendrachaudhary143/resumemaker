@@ -502,11 +502,13 @@ function displayResume(data) {
                     <td style="padding: 2px 8px 2px 0; vertical-align: top; width: 12px; color: #666; text-align: center; font-weight: 400;">:</td>
                     <td style="padding: 2px 8px 2px 0; vertical-align: top;">${data.name}</td>
                 </tr>
+                ${data.fatherName && data.fatherName.trim() !== '' ? `
                 <tr>
                     <td style="padding: 2px 8px 2px 0; vertical-align: top; font-weight: 500; color: #333; width: 170px;">Father's Name</td>
                     <td style="padding: 2px 8px 2px 0; vertical-align: top; width: 12px; color: #666; text-align: center; font-weight: 400;">:</td>
                     <td style="padding: 2px 8px 2px 0; vertical-align: top;">${data.fatherName}</td>
                 </tr>
+                ` : ''}
                 <tr>
                     <td style="padding: 2px 8px 2px 0; vertical-align: top; font-weight: 500; color: #333; width: 170px;">Date of Birth</td>
                     <td style="padding: 2px 8px 2px 0; vertical-align: top; width: 12px; color: #666; text-align: center; font-weight: 400;">:</td>
